@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/Header';
-import ResourceCard from '@/components/ResourceCard';
 import { resources } from '@/data/resources';
+import ResourceGrid from '@/components/ResourceGrid';
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,9 +11,8 @@ export default function HomePage() {
   return (
     <div>
       <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-
       <main style={{ padding: '2rem' }}>
-        <ResourceCard resource={resources[0]} />
+        <ResourceGrid resources={resources} />
       </main>
     </div>
   );
