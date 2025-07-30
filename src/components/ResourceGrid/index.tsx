@@ -3,12 +3,22 @@
 import React from 'react';
 import { Resource } from '@/types/resource';
 import ResourceCard from '../ResourceCard';
-import { Grid } from './styles';
+import { EmptyState, Grid } from './styles';
 interface ResourceGridProps {
   resources: Resource[];
 }
 
 export default function ResourceGrid({ resources }: ResourceGridProps) {
+
+  if (resources.length === 0) {
+    return (
+      <EmptyState>
+        <h3>No resources found</h3>
+        <p>Try changing the search term or category filter.</p>
+      </EmptyState>
+    );
+  }
+
   return (
     <Grid>
       {resources.map((res) => (

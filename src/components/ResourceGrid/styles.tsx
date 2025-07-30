@@ -17,3 +17,9 @@ export const Grid = styled.div`
     grid-template-columns: repeat(4, 1fr);
   }
 `;
+
+export const EmptyState = styled.div`
+  text-align: center;
+  padding: 4rem 2rem;
+  color: ${({ theme }) => theme.colors.gray[600]};
+`;

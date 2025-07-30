@@ -12,7 +12,7 @@ export default function HomePage() {
     <div>
       <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <main style={{ padding: '2rem' }}>
-        <ResourceGrid resources={resources} />
+        <ResourceGrid resources={[]} />
       </main>
     </div>
   );
