@@ -6,9 +6,11 @@ import CategoryFilter, { Category } from "@/components/CategoryFilter";
 import ResourceGrid from "@/components/ResourceGrid";
 import { resources } from "@/data/resources";
 import { useResources } from "@/hooks/useResources";
+import { useFavorites } from "@/hooks/useFavorites";
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const [selectedCategory, setSelectedCategory] = useState<Category | "All">(
     "All"
   );
@@ -44,7 +46,11 @@ export default function HomePage() {
       />
 
       <main style={{ padding: "2rem" }}>
-        <ResourceGrid resources={filteredResources} />
+        <ResourceGrid
+          resources={filteredResources}
+          onToggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
+        />
       </main>
     </div>
   );

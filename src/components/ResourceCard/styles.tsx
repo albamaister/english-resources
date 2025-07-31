@@ -64,3 +64,34 @@ export const VisitButton = styled.button`
   }
 `;
 
+export const FavoriteButton = styled.button<{ $isFavorite: boolean }>`
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  box-shadow: ${props => props.theme.shadows.sm};
+  transition: all ${props => props.theme.transitions.default};
+
+  &:hover {
+    background: white;
+    box-shadow: ${props => props.theme.shadows.md};
+    transform: scale(1.1);
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: ${props => props.$isFavorite ? props.theme.colors.yellow[500] : props.theme.colors.gray[400]};
+    fill: ${props => props.$isFavorite ? props.theme.colors.yellow[500] : 'none'};
+    transition: all ${props => props.theme.transitions.default};
+
+    &:hover {
+      color: ${props => props.theme.colors.yellow[500]};
+    }
+  }
+`;
+
