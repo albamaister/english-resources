@@ -18,12 +18,14 @@ interface CategoryFilterProps {
   categories: Category[];
   selectedCategory: Category | 'All';
   onCategoryChange: (category: Category | 'All') => void;
+  resourceCounts: Record<string, number>;
 }
 
 export default function CategoryFilter({
   categories,
   selectedCategory,
   onCategoryChange,
+  resourceCounts
 }: CategoryFilterProps) {
   const allCategories = ['All', ...categories] as const;
 
@@ -36,7 +38,7 @@ export default function CategoryFilter({
             $selected={selectedCategory === category}
             onClick={() => onCategoryChange(category)}
           >
-            {category}
+              {category} ({resourceCounts[category] || 0})
           </Button>
         ))}
       </Buttons>
