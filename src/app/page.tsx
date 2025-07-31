@@ -25,6 +25,9 @@ export default function HomePage() {
     selectedCategory,
   });
 
+  const favoriteResources = filteredResources.filter((r) => isFavorite(r.id));
+  const regularResources = filteredResources.filter((r) => !isFavorite(r.id));
+
   const resourceCounts: Record<string, number> = resources.reduce(
     (acc, resource) => {
       acc[resource.category] = (acc[resource.category] || 0) + 1;
@@ -47,7 +50,8 @@ export default function HomePage() {
 
       <main style={{ padding: "2rem" }}>
         <ResourceGrid
-          resources={filteredResources}
+          favoriteResources={favoriteResources}
+          regularResources={regularResources}
           onToggleFavorite={toggleFavorite}
           isFavorite={isFavorite}
         />

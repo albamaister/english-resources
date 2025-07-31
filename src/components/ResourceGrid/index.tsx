@@ -5,17 +5,19 @@ import { Resource } from "@/types/resource";
 import ResourceCard from "../ResourceCard";
 import { EmptyState, Grid } from "./styles";
 interface ResourceGridProps {
-  resources: Resource[];
+  favoriteResources: Resource[];
+  regularResources: Resource[];
   onToggleFavorite: (resourceId: string) => void;
   isFavorite: (resourceId: string) => boolean;
 }
 
 export default function ResourceGrid({
-  resources,
+  favoriteResources,
+  regularResources,
   isFavorite,
   onToggleFavorite,
 }: ResourceGridProps) {
-  if (resources.length === 0) {
+  if (regularResources.length === 0) {
     return (
       <EmptyState>
         <h3>No resources found</h3>
@@ -25,15 +27,40 @@ export default function ResourceGrid({
   }
 
   return (
-    <Grid>
-      {resources.map((res) => (
-        <ResourceCard
-          key={res.id}
-          resource={res}
-          isFavorite={isFavorite(res.id)}
-          onToggleFavorite={onToggleFavorite}
-        />
-      ))}
-    </Grid>
+    <div>
+      {favoriteResources.length > 0 && (
+        <section style={{ marginBottom: "2rem" }}>
+          <h2 style={{ fontSize: "1.25rem", marginBottom: "1rem" }}>
+            Your Favorites
+          </h2>
+          <Grid>
+            {favoriteResources.map((res) => (
+              <ResourceCard
+                key={res.id}
+                resource={res}
+                isFavorite={true}
+                onToggleFavorite={onToggleFavorite}
+              />
+            ))}
+          </Grid>
+        </section>
+      )}
+
+      <section>
+        <h2 style={{ fontSize: "1.25rem", marginBottom: "1rem" }}>
+          All Resources
+        </h2>
+        <Grid>
+          {regularResources.map((res) => (
+            <ResourceCard
+              key={res.id}
+              resource={res}
+              isFavorite={isFavorite(res.id)}
+              onToggleFavorite={onToggleFavorite}
+            />
+          ))}
+        </Grid>
+      </section>
+    </div>
   );
 }
