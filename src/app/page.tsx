@@ -7,6 +7,7 @@ import ResourceGrid from "@/components/ResourceGrid";
 import { resources } from "@/data/resources";
 import { useResources } from "@/hooks/useResources";
 import { useFavorites } from "@/hooks/useFavorites";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,6 +57,7 @@ export default function HomePage() {
           isFavorite={isFavorite}
         />
       </main>
+      <Footer />
     </div>
   );
 }
