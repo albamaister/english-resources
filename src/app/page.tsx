@@ -1,22 +1,61 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  padding: 2rem;
-  background-color: #f0f8ff;
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  color: #333;
-`;
+import React, { useState } from "react";
+import Header from "@/components/Header";
+import CategoryFilter, { Category } from "@/components/CategoryFilter";
+import ResourceGrid from "@/components/ResourceGrid";
+import { resources } from "@/data/resources";
+import { useResources } from "@/hooks/useResources";
+import { useFavorites } from "@/hooks/useFavorites";
 
 export default function HomePage() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const [selectedCategory, setSelectedCategory] = useState<Category | "All">(
+    "All"
+  );
+
+  const categories: Category[] = Array.from(
+    new Set(resources.map((r) => r.category))
+  ) as Category[];
+
+  const { filteredResources } = useResources({
+    allResources: resources,
+    searchTerm,
+    selectedCategory,
+  });
+
+  const favoriteResources = filteredResources.filter((r) => isFavorite(r.id));
+  const regularResources = filteredResources.filter((r) => !isFavorite(r.id));
+
+  const resourceCounts: Record<string, number> = resources.reduce(
+    (acc, resource) => {
+      acc[resource.category] = (acc[resource.category] || 0) + 1;
+      acc["All"] = (acc["All"] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
   return (
-    <Wrapper>
-      <Title>Hello EnglishHub</Title>
-    </Wrapper>
+    <div>
+      <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+
+      <CategoryFilter
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        resourceCounts={resourceCounts}
+      />
+
+      <main style={{ padding: "2rem" }}>
+        <ResourceGrid
+          favoriteResources={favoriteResources}
+          regularResources={regularResources}
+          onToggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
+        />
+      </main>
+    </div>
   );
 }
