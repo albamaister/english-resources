@@ -21,7 +21,7 @@ export const HeaderContent = styled.div`
   }
 
   @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    padding: 0 2rem;
+    padding: 1rem 2rem;
   }
 `;
 

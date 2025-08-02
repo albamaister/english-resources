@@ -1,23 +1,13 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Button, Buttons, Container } from './styles';
-
-export type Category =
-  | 'Listening'
-  | 'Grammar'
-  | 'AI Tools'
-  | 'Vocabulary'
-  | 'Speaking'
-  | 'Reading'
-  | 'Writing'
-  | 'Pronunciation'
-  | 'General';
+import React from "react";
+import { FilterButton, FilterButtons, FilterContainer, CountBadge } from "./styles";
+import { Category } from "@/types/resource";
 
 interface CategoryFilterProps {
   categories: Category[];
-  selectedCategory: Category | 'All';
-  onCategoryChange: (category: Category | 'All') => void;
+  selectedCategory: Category | "All";
+  onCategoryChange: (category: Category | "All") => void;
   resourceCounts: Record<string, number>;
 }
 
@@ -25,23 +15,25 @@ export default function CategoryFilter({
   categories,
   selectedCategory,
   onCategoryChange,
-  resourceCounts
+  resourceCounts,
 }: CategoryFilterProps) {
-  const allCategories = ['All', ...categories] as const;
+  const allCategories = ["All", ...categories] as const;
 
   return (
-    <Container>
-      <Buttons>
+    <FilterContainer>
+      <FilterButtons>
         {allCategories.map((category) => (
-          <Button
+          <FilterButton
             key={category}
             $selected={selectedCategory === category}
+            $category={category}
             onClick={() => onCategoryChange(category)}
           >
-              {category} ({resourceCounts[category] || 0})
-          </Button>
+            <span>{category}</span>
+            <CountBadge> ({resourceCounts[category] || 0})</CountBadge>
+          </FilterButton>
         ))}
-      </Buttons>
-    </Container>
+      </FilterButtons>
+    </FilterContainer>
   );
 }

@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import Header from "@/components/Header";
-import CategoryFilter, { Category } from "@/components/CategoryFilter";
+import CategoryFilter from "@/components/CategoryFilter";
 import ResourceGrid from "@/components/ResourceGrid";
 import { resources } from "@/data/resources";
 import { useResources } from "@/hooks/useResources";
 import { useFavorites } from "@/hooks/useFavorites";
 import Footer from "@/components/Footer";
+import { Category } from "@/types/resource";
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
