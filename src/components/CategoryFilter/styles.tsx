@@ -3,17 +3,22 @@ import styled from "styled-components";
 
 export const FilterContainer = styled.div`
   background: white;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[200]};
-  padding: 1rem;
+  border-bottom: 1px solid ${props => props.theme.colors.gray[200]};
   position: sticky;
   top: 4rem;
   z-index: 40;
+`;
 
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+export const FilterContent = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media (min-width: ${props => props.theme.breakpoints.sm}) {
     padding: 1rem 1.5rem;
   }
 
-  @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
     padding: 1rem 2rem;
   }
 `;
