@@ -3,14 +3,16 @@ import styled from 'styled-components';
 export const Card = styled.div`
   background: white;
   border-radius: 0.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.gray[200]};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  box-shadow: ${props => props.theme.shadows.sm};
+  border: 1px solid ${props => props.theme.colors.gray[200]};
   overflow: hidden;
-  transition: transform 0.2s ease;
-  
+  transition: all ${props => props.theme.transitions.default};
+  transform: translateY(0);
+  position: relative;
+
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.lg};
+    box-shadow: ${props => props.theme.shadows.lg};
+    transform: translateY(-0.25rem);
   }
 `;
 
