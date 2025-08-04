@@ -9,6 +9,40 @@ import { useResources } from "@/hooks/useResources";
 import { useFavorites } from "@/hooks/useFavorites";
 import Footer from "@/components/Footer";
 import { Category } from "@/types/resource";
+import styled from "styled-components";
+
+const StyledMain = styled.main`
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  @media (min-width: 640px) {
+    padding: 2rem 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 2rem 2rem;
+  }
+`;
+
+const DescriptionContainer = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const Title = styled.h1`
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.gray[900]};
+  margin-bottom: 0.5rem;
+`;
+
+const Description = styled.p`
+  color: ${({ theme }) => theme.colors.gray[600]};
+  max-width: 48rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+`;
+
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,14 +84,22 @@ export default function HomePage() {
         resourceCounts={resourceCounts}
       />
 
-      <main style={{ padding: "2rem" }}>
-        <ResourceGrid
-          favoriteResources={favoriteResources}
-          regularResources={regularResources}
-          onToggleFavorite={toggleFavorite}
-          isFavorite={isFavorite}
-        />
-      </main>
+      <StyledMain>
+        <DescriptionContainer>
+          <Title>English Learning Resources</Title>
+          <Description>
+            Discover curated websites, tools, and platforms to improve your
+            English skills. From grammar guides to AI-powered tutors, find the
+            perfect resources for your learning journey.
+          </Description>
+          <ResourceGrid
+            favoriteResources={favoriteResources}
+            regularResources={regularResources}
+            onToggleFavorite={toggleFavorite}
+            isFavorite={isFavorite}
+          />
+        </DescriptionContainer>
+      </StyledMain>
       <Footer />
     </div>
   );
