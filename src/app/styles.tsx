@@ -27,7 +27,6 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   color: ${({ theme }) => theme.colors.gray[600]};
-  max-width: 48rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 `;
