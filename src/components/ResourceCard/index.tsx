@@ -60,7 +60,6 @@ export default function ResourceCard({
           src={resource.thumbnail}
           alt={resource.title}
           fill
-          style={{ objectFit: "cover" }}
         />
       </ImageContainer>
 
