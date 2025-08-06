@@ -15,7 +15,9 @@ export default function ResourceGrid({
   regularResources,
   onToggleFavorite,
 }: ResourceGridProps) {
-  if (regularResources.length === 0) {
+  const totalResources = favoriteResources.length + regularResources.length;
+
+  if (totalResources === 0) {
     return (
       <EmptyState>
         <h3>No resources found</h3>
