@@ -4,46 +4,35 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import CategoryFilter from "@/components/CategoryFilter";
 import ResourceGrid from "@/components/ResourceGrid";
-import { resources } from "@/data/resources";
 import { useResources } from "@/hooks/useResources";
-import { useFavorites } from "@/hooks/useFavorites";
 import Footer from "@/components/Footer";
 import { Category } from "@/types/resource";
-import styled from "styled-components";
 import { Description, DescriptionContainer, StyledMain, Title } from "./styles";
 
 export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const [selectedCategory, setSelectedCategory] = useState<Category | "All">(
     "All"
   );
 
-  const categories: Category[] = Array.from(
-    new Set(resources.map((r) => r.category))
-  ) as Category[];
-
-  const { filteredResources } = useResources({
-    allResources: resources,
+  const {
+    categories,
+    favoriteResources,
+    regularResources,
+    resourceCounts,
+    toggleFavorite,
+  } = useResources({
     searchTerm,
     selectedCategory,
   });
 
-  const favoriteResources = filteredResources.filter((r) => isFavorite(r.id));
-  const regularResources = filteredResources.filter((r) => !isFavorite(r.id));
-
-  const resourceCounts: Record<string, number> = resources.reduce(
-    (acc, resource) => {
-      acc[resource.category] = (acc[resource.category] || 0) + 1;
-      acc["All"] = (acc["All"] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>
-  );
-
   return (
     <div>
-      <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <Header
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        favoritesCount={favoriteResources.length}
+      />
 
       <CategoryFilter
         categories={categories}
@@ -64,7 +53,6 @@ export default function HomePage() {
             favoriteResources={favoriteResources}
             regularResources={regularResources}
             onToggleFavorite={toggleFavorite}
-            isFavorite={isFavorite}
           />
         </DescriptionContainer>
       </StyledMain>

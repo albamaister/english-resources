@@ -29,8 +29,8 @@ export interface Resource {
 
 interface ResourceCardProps {
   resource: Resource;
-  isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
+  isFavorite?: boolean;
 }
 
 export default function ResourceCard({
@@ -45,7 +45,7 @@ export default function ResourceCard({
   return (
     <Card>
       <FavoriteButton
-        $isFavorite={isFavorite}
+        $isFavorite={isFavorite ?? false}
         onClick={(e) => {
           e.stopPropagation();
           onToggleFavorite(resource.id);
