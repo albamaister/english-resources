@@ -34,7 +34,16 @@ export default function Footer() {
         <Heart size={16} />
         <span>for English learners worldwide</span>
       </MadeWithLove>
-      <Copyright>© {new Date().getFullYear()} bryanalba.dev</Copyright>
+      <Copyright>
+        © {new Date().getFullYear()}{" "}
+        <a
+          href="https://www.linkedin.com/in/bryanalba/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          bryanalba.dev
+        </a>
+      </Copyright>
     </FooterContainer>
   );
 }
