@@ -68,17 +68,6 @@ export const resources: Resource[] = [
     featured: true,
   },
   {
-    id: "7",
-    title: "Hemingway Editor",
-    description:
-      "Improve your English writing by making it clearer and more concise. Highlights passive voice, complex sentences, and readability issues.",
-    url: "https://hemingwayapp.com/",
-    category: "Writing",
-    thumbnail: "/images/hemingway.png",
-    tags: ["writing", "clarity", "editing"],
-    featured: false,
-  },
-  {
     id: "8",
     title: "EF SET",
     description:
@@ -88,39 +77,6 @@ export const resources: Resource[] = [
     thumbnail: "/images/ef-set.jpg",
     tags: ["certification", "test", "assessment"],
     featured: true,
-  },
-  {
-    id: "9",
-    title: "iA Spid",
-    description:
-      "Improve your English listening and speaking with AI-powered simulations of real-life conversations.",
-    url: "https://iaspid.com/",
-    category: "AI Tools",
-    thumbnail: "/images/iaspid.png",
-    tags: ["speaking", "ai", "listening"],
-    featured: true,
-  },
-  {
-    id: "10",
-    title: "BBC Learning English",
-    description:
-      "Learn grammar, vocabulary, pronunciation, and current events through daily videos, quizzes, and courses.",
-    url: "https://www.bbc.co.uk/learningenglish",
-    category: "General",
-    thumbnail: "/images/bbc.jpg",
-    tags: ["grammar", "news", "pronunciation"],
-    featured: true,
-  },
-  {
-    id: "11",
-    title: "Elllo.org",
-    description:
-      "Free audio and video lessons with transcripts and quizzes to improve listening comprehension.",
-    url: "https://elllo.org/",
-    category: "Listening",
-    thumbnail: "/images/elllo.png",
-    tags: ["listening", "audio", "quizzes"],
-    featured: false,
   },
   {
     id: "12",
