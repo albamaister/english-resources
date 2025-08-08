@@ -8,16 +8,16 @@ interface ResourceGridProps {
   favoriteResources: Resource[];
   regularResources: Resource[];
   onToggleFavorite: (resourceId: string) => void;
-  isFavorite: (resourceId: string) => boolean;
 }
 
 export default function ResourceGrid({
   favoriteResources,
   regularResources,
-  isFavorite,
   onToggleFavorite,
 }: ResourceGridProps) {
-  if (regularResources.length === 0) {
+  const totalResources = favoriteResources.length + regularResources.length;
+
+  if (totalResources === 0) {
     return (
       <EmptyState>
         <h3>No resources found</h3>
@@ -55,7 +55,6 @@ export default function ResourceGrid({
             <ResourceCard
               key={res.id}
               resource={res}
-              isFavorite={isFavorite(res.id)}
               onToggleFavorite={onToggleFavorite}
             />
           ))}

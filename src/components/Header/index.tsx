@@ -18,9 +18,10 @@ import {
 interface HeaderProps {
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  favoritesCount?: number
 }
 
-export default function Header({ searchTerm, onSearchChange }: HeaderProps) {
+export default function Header({ searchTerm, onSearchChange, favoritesCount = 0 }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderContent>

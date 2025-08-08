@@ -5,14 +5,17 @@ import Image from "next/image";
 import {
   Card,
   CardContent,
-  Description,
+  CardDescription,
   FavoriteButton,
   ImageContainer,
   TagsContainer,
-  Title,
+  CardTitle,
   VisitButton,
+  CardHeader,
+  CategoryBadge,
+  Tag,
 } from "./styles";
-import { Star, Tag } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 
 export interface Resource {
   id: string;
@@ -26,8 +29,8 @@ export interface Resource {
 
 interface ResourceCardProps {
   resource: Resource;
-  isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
+  isFavorite?: boolean;
 }
 
 export default function ResourceCard({
@@ -42,7 +45,7 @@ export default function ResourceCard({
   return (
     <Card>
       <FavoriteButton
-        $isFavorite={isFavorite}
+        $isFavorite={isFavorite ?? false}
         onClick={(e) => {
           e.stopPropagation();
           onToggleFavorite(resource.id);
@@ -57,12 +60,18 @@ export default function ResourceCard({
           src={resource.thumbnail}
           alt={resource.title}
           fill
-          style={{ objectFit: "cover" }}
         />
       </ImageContainer>
+
       <CardContent>
-        <Title>{resource.title}</Title>
-        <Description>{resource.description}</Description>
+        <CardHeader>
+          <CardTitle>{resource.title}</CardTitle>
+          <CategoryBadge $category={resource.category}>
+            {resource.category}
+          </CategoryBadge>
+        </CardHeader>
+
+        <CardDescription>{resource.description}</CardDescription>
 
         <TagsContainer>
           {resource.tags.slice(0, 3).map((tag) => (
@@ -73,7 +82,10 @@ export default function ResourceCard({
           )}
         </TagsContainer>
 
-        <VisitButton onClick={handleClick}>Visit Resource</VisitButton>
+        <VisitButton onClick={handleClick}>
+          <span>Visit Resource</span>
+          <ExternalLink/>
+          </VisitButton>
       </CardContent>
     </Card>
   );

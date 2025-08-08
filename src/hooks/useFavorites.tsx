@@ -1,21 +1,29 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const STORAGE_KEY = 'favoriteResources';
+const STORAGE_KEY = "favoriteResources";
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      setFavorites(JSON.parse(stored));
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        setFavorites(JSON.parse(stored));
+      }
+    } catch (error) {
+      console.error("Error loading favorites from localStorage:", error);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    } catch (error) {
+      console.error("Error saving favorites to localStorage:", error);
+    }
   }, [favorites]);
 
   const toggleFavorite = (resourceId: string) => {
@@ -28,5 +36,5 @@ export function useFavorites() {
 
   const isFavorite = (resourceId: string) => favorites.includes(resourceId);
 
-  return { favorites, toggleFavorite, isFavorite };
+  return { toggleFavorite, isFavorite };
 }

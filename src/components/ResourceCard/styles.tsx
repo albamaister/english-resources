@@ -1,16 +1,30 @@
 import styled from 'styled-components';
 
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  'Listening': { bg: '#dbeafe', text: '#1e40af' },
+  'Grammar': { bg: '#dcfce7', text: '#166534' },
+  'AI Tools': { bg: '#f3e8ff', text: '#6b21a8' },
+  'Vocabulary': { bg: '#fef3c7', text: '#92400e' },
+  'Speaking': { bg: '#fee2e2', text: '#991b1b' },
+  'Reading': { bg: '#e0e7ff', text: '#3730a3' },
+  'Writing': { bg: '#ccfbf1', text: '#115e59' },
+  'Pronunciation': { bg: '#fce7f3', text: '#9d174d' },
+  'General': { bg: '#fed7aa', text: '#9a3412' }
+};
+
 export const Card = styled.div`
   background: white;
   border-radius: 0.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.gray[200]};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  box-shadow: ${props => props.theme.shadows.sm};
+  border: 1px solid ${props => props.theme.colors.gray[200]};
   overflow: hidden;
-  transition: transform 0.2s ease;
-  
+  transition: all ${props => props.theme.transitions.default};
+  transform: translateY(0);
+  position: relative;
+
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.lg};
+    box-shadow: ${props => props.theme.shadows.lg};
+    transform: translateY(-0.25rem);
   }
 `;
 
@@ -20,20 +34,45 @@ export const ImageContainer = styled.div`
 `;
 
 export const CardContent = styled.div`
-  padding: 1rem;
+  padding: 1.5rem;
 `;
 
-export const Title = styled.h3`
+export const CardHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+`
+
+export const CardTitle = styled.h3`
   font-size: 1.125rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.gray[900]};
+  color: ${props => props.theme.colors.gray[900]};
+  line-height: 1.4;
   margin: 0;
+  transition: color ${props => props.theme.transitions.default};
+
+  ${Card}:hover & {
+    color: ${props => props.theme.colors.primary[600]};
+  }
 `;
 
-export const Description = styled.p`
+export const CategoryBadge = styled.span<{ $category: string }>`
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+  background: ${props => categoryColors[props.$category]?.bg || props.theme.colors.gray[100]};
+  color: ${props => categoryColors[props.$category]?.text || props.theme.colors.gray[800]};
+`;
+
+export const CardDescription = styled.p`
+  color: ${props => props.theme.colors.gray[600]};
   font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.gray[600]};
-  margin: 0.5rem 0 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
 `;
 
 export const TagsContainer = styled.div`
@@ -53,14 +92,29 @@ export const Tag = styled.span`
 
 export const VisitButton = styled.button`
   width: 100%;
-  background: ${({ theme }) => theme.colors.primary[600]};
+  background: ${props => props.theme.colors.primary[600]};
   color: white;
-  padding: 0.5rem;
+  padding: 0.625rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  
+  transition: all ${props => props.theme.transitions.default};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
   &:hover {
-    background: ${({ theme }) => theme.colors.primary[700]};
+    background: ${props => props.theme.colors.primary[700]};
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    transition: transform ${props => props.theme.transitions.default};
+  }
+
+  &:hover svg {
+    transform: translate(0.125rem, -0.125rem);
   }
 `;
 

@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EnglishHub 🌍
 
-## Getting Started
+**EnglishHub** is a modern web application that curates high-quality, free English learning resources into one accessible place. Whether you're practicing listening, improving your grammar, or expanding your vocabulary — EnglishHub helps you find the right tools fast.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Live Demo
+
+[👉 Visit EnglishHub](https://englishhub.com)
+
+---
+
+## 📚 Features
+
+- 🔎 **Search and Filter**: Quickly find resources by keyword or category
+- ⭐ **Favorites**: Save your favorite tools for easy access (stored locally)
+- 🏷️ **Categories**: Browse by skill — Grammar, Listening, Vocabulary, etc.
+- ⚡ **Featured Resources**: Highlighted high-quality tools
+- 🧠 **No login required**: Everything works instantly
+- 🎧 **Podcast and Video resources** included
+- 🖼️ **Locally hosted images** for speed and reliability
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Styling**: [styled-components](https://styled-components.com/)
+- **Testing**: [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+- **Version Control**: Git + GitHub
+- **Branch Strategy**: `develop` → PRs → `main`
+
+---
+
+## 🗂️ Folder Structure
+
+```
+.
+├── components/         # Reusable UI components
+├── hooks/              # Custom React hooks (favorites, filtering, etc.)
+├── data/               # Static resource data
+├── styles/             # Global and component styles
+├── public/images/      # Thumbnails and favicons
+├── app/                # Next.js app structure
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run all tests:
 
-## Learn More
+```bash
+npm test
+```
 
-To learn more about Next.js, take a look at the following resources:
+Check coverage:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run test -- --coverage
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌐 SEO & Metadata
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Includes dynamic metadata using Next.js `metadata` object:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `title`, `description`, `keywords`
+- Open Graph tags for rich link previews
+- Twitter meta tags
+- Favicon and OG image support
+
+---
+
+## 💡 Future Improvements
+
+- 🔐 Optional user login with Firebase
+- 📊 Resource analytics (most visited, most favorited)
+- 🌍 Multi-language interface (English/Spanish)
+- 🧩 Admin panel to manage resources
+
+---
+
+## 👤 Author
+
+Made with ❤️ by [Bryan Alba](https://www.linkedin.com/in/bryanalba/)

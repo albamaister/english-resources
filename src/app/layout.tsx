@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import StyledComponentsRegistry from '@/lib/registry';
-import { GlobalStyle } from '@/styles/GlobalStyle';
+import StyledComponentsRegistry from "@/lib/registry";
+import './globals.css'
+
 
 export default function RootLayout({
   children,
@@ -10,11 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="images/favicon.ico" />
+      </head>
       <body>
-        <StyledComponentsRegistry>
-          <GlobalStyle />
-          {children}
-        </StyledComponentsRegistry>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );
