@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://englishhubapp.com/sitemap.xml
+Sitemap: https://www.englishhubapp.com/sitemap.xml
