@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "speaking",
     "writing",
     "pronunciation",
-    "free"
+    "free",
   ],
   openGraph: {
     title: "EnglishHub - Free English Learning Resources",
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
         url: "https://englishhubapp.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "EnglishHub"
-      }
+        alt: "EnglishHub",
+      },
     ],
     locale: "en_US",
-    type: "website"
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     description:
       "Improve your English with curated tools and platforms. Grammar guides, listening exercises, and vocabulary builders all in one place.",
     images: ["https://englishhubapp.com/images/og-image.jpg"],
-    creator: "@englishhub"
+    creator: "@englishhub",
   },
   icons: {
     icon: "/images/favicon.ico",
     shortcut: "/images/favicon.ico",
-    apple: "/images/apple-touch-icon.png"
-  }
+    apple: "/images/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -58,6 +58,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <head>
+          <meta
+            name="google-site-verification"
+            content="YQTnJ39LmsRwfItM-3AsptqbTSoGAaVr4XsM_joIZJ8"
+          />
+        </head>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>

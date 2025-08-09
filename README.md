@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-[👉 Visit EnglishHub](https://englishhub.com)
+[👉 Visit EnglishHub](https://englishhubapp.com)
 
 ---
 
