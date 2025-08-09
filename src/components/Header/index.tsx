@@ -21,7 +21,7 @@ interface HeaderProps {
   favoritesCount?: number
 }
 
-export default function Header({ searchTerm, onSearchChange, favoritesCount = 0 }: HeaderProps) {
+export default function Header({ searchTerm, onSearchChange }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderContent>
