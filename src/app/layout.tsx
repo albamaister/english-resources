@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description:
       "Improve your English with curated tools and platforms. Grammar guides, listening exercises, and vocabulary builders all in one place.",
     images: ["https://englishhubapp.com/images/og-image.jpg"],
-    creator: "@yourhandle"
+    creator: "@englishhub"
   },
   icons: {
     icon: "/images/favicon.ico",
